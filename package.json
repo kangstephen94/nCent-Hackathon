@@ -1,0 +1,33 @@
+{
+  "name": "ncent",
+  "version": "1.0.0",
+  "description": "frontend",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./bin/www",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kangstephen94/nCent.git"
+  },
+  "keywords": [
+    "sdk",
+    "frontend"
+  ],
+  "author": "stukiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kangstephen94/nCent/issues"
+  },
+  "homepage": "https://github.com/kangstephen94/nCent#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "ncent-sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
