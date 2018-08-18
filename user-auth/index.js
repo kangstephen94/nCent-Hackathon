@@ -1,7 +1,7 @@
 const passport = require("passport");
 const express = require("express");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require('./config.keys.js');
+const keys = require('../config/keys');
 
 const app = express();
 
@@ -25,5 +25,5 @@ app.get(
   })
 );
 
-const PORT = process.env.PORT || PORT;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);
