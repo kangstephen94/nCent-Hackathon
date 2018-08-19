@@ -3,7 +3,7 @@ import React from "react";
 
 class LandingPage extends React.Component {
   render() {
-    return (<div className="bg">Landing Page</div>);
+    return (<div className="bg"></div>);
   }
 }
 

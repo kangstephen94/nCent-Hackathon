@@ -106,6 +106,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _nav = __webpack_require__(/*! ./nav/nav */ "./frontend/components/nav/nav.jsx");
+
+var _nav2 = _interopRequireDefault(_nav);
+
 var _landing_page = __webpack_require__(/*! ./landing_page/landing_page */ "./frontend/components/landing_page/landing_page.jsx");
 
 var _landing_page2 = _interopRequireDefault(_landing_page);
@@ -116,6 +120,7 @@ var App = function App() {
   return _react2.default.createElement(
     "div",
     null,
+    _react2.default.createElement(_nav2.default, null),
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
@@ -171,11 +176,7 @@ var LandingPage = function (_React$Component) {
   _createClass(LandingPage, [{
     key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: "bg" },
-        "Landing Page"
-      );
+      return _react2.default.createElement("div", { className: "bg" });
     }
   }]);
 
@@ -183,6 +184,98 @@ var LandingPage = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = LandingPage;
+
+/***/ }),
+
+/***/ "./frontend/components/nav/nav.jsx":
+/*!*****************************************!*\
+  !*** ./frontend/components/nav/nav.jsx ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_React$Component) {
+  _inherits(Nav, _React$Component);
+
+  function Nav() {
+    _classCallCheck(this, Nav);
+
+    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+  }
+
+  _createClass(Nav, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "header",
+          { className: "nav" },
+          _react2.default.createElement(
+            "div",
+            { className: "nav-left" },
+            _react2.default.createElement("img", { className: "ncent-logo", src: "../app/assets/images/ncent_logo.png" }),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { className: "nav-logo-link", to: "/" },
+              "eventCent"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "nav-right" },
+            _react2.default.createElement(
+              "ul",
+              { className: "nav-right-links" },
+              _react2.default.createElement(
+                "li",
+                { className: "tokens" },
+                "Tokens: 100"
+              ),
+              _react2.default.createElement(
+                "li",
+                { className: "logout" },
+                _react2.default.createElement(
+                  "button",
+                  { className: "logout-button" },
+                  "Logout"
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Nav;
+}(_react2.default.Component);
+
+exports.default = Nav;
 
 /***/ }),
 
