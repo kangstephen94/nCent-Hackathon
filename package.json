@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon ./bin/www",
     "test": "test",
-    "start": "webpack --watch --mode=development"
+    "start": "webpack --watch --mode=development",
     "auth": "nodemon ./user-auth/index.js"
   },
   "repository": {
