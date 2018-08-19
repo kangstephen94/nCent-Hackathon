@@ -7,7 +7,6 @@
     "start:dev": "nodemon ./bin/www",
     "test": "test",
     "auth": "nodemon ./user-auth/index.js"
-
   },
   "repository": {
     "type": "git",
