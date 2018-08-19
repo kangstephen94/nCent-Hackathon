@@ -1,5 +1,6 @@
 const passport = require('passport');
 
+
 module.exports = app => {
 
   //Pass user off to passport, when directed to this route
@@ -13,4 +14,7 @@ module.exports = app => {
   //Google recognizes token is available
   app.get("/auth/google/callback", passport.authenticate("google"));
   
+  app.get("/api/current_user", (req, res) => {
+    res.send(req.user);
+  });
 };

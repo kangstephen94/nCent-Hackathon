@@ -3,7 +3,6 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const keys = require("../config/keys");
 const { Client } = require('pg');
 
-
 const client = new Client ({
   user: 'postgres',
   host: 'localhost',
@@ -14,6 +13,18 @@ const client = new Client ({
 
 client.connect();
 
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  client.query(`SELECT * FROM users WHERE id = ${id}`)
+    .then(res => {
+      done(null, res.rows[0]);
+    });
+});
+
 // Generic register, use specific google provider
 passport.use(
   new GoogleStrategy(
@@ -23,18 +34,19 @@ passport.use(
       callbackURL: "/auth/google/callback"
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile.id);
       //Google api services sends back an accessToken to retrieve user information after redirected back to callback.
-      const email = profile.emails[0].value;
-      client.query(`SELECT * FROM users WHERE googleId = ${profile.id}`)
+
+      client.query(`SELECT * FROM users WHERE googleId = ${profile.id}::varchar`)
         .then(res => {
           if (res.rows.length !== 0) {
+            done(null, res.rows[0])
           } else {
             // Need to also generate a walletID and insert it here.
-            client.query(`INSERT INTO users(googleId) VALUES(${profile.id})`);
+            client.query(`INSERT INTO users(googleId) VALUES(${profile.id}::varchar) RETURNING *`)
+              .then(res => done(null, res.rows[0]))
           }
         })
-        .catch(e => console.error(e.stack));b
+        .catch(e => console.error(e.stack));
     }
   )
 );
