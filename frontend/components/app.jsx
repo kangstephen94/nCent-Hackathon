@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 // import { AuthRoute } from "../util/route_util";
 //   ProtectedRoute,
-//   UserProtectedRoute 
+//   UserProtectedRoute
 import LandingPage from "./landing_page/landing_page";
 
 const App = () => (
