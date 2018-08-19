@@ -1,30 +1,31 @@
-// webpack.config.js
-var path = require('path');
+var path = require("path");
+
 
 module.exports = {
-  entry: "./frontend/novello.jsx",
+  context: __dirname,
+  entry: "./frontend/event_cent.jsx",
   output: {
-      path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
-      filename: "bundle.js"
+    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
+    filename: "bundle.js"
   },
   module: {
-    loaders: [
-      {
-        test: [/\.jsx?$/],
-        exclude: /(node_modules)/,
+    rules: [{
+      test: [/\.jsx?$/, /\.js?$/],
+      exclude: /(node_modules)/,
+      use: {
         loader: 'babel-loader',
         query: {
           presets: ['env', 'react']
         }
       },
-      {
-        test: /\.(png|jpg)$/,
-        loader: 'url-loader'
-      }
-    ]
+    }]
+  },
+  target: 'node',
+  node: {
+    fs: 'empty'
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '*']
+    extensions: [".js", ".jsx", "*"]
   }
 };
