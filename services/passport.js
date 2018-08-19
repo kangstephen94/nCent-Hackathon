@@ -23,21 +23,19 @@ passport.use(
       callbackURL: "/auth/google/callback"
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile.id.toString());
+      console.log('' + profile.id);
       //Google api services sends back an accessToken to retrieve user information after redirected back to callback.
       client.query(`SELECT * FROM users WHERE googleId = ${profile.id.toString()}`)
-        .then( (res) => {
-          console.log(res)
-          if (res.rows.length !== 0) {
-            console.log('not empty')
-          } else {
-            // Need to also generate a walletID and insert it here
-            console.log('inserted')
-            console.log(profile.id)
-            client.query(`INSERT INTO users(googleId) VALUES(${profile.id.toString()})`);
-          }
-        })
-        .catch(e => console.error(e.stack))
+      .then( (res) => {
+        console.log(res)
+        if (res.rows.length !== 0) {
+
+        } else {
+          // Need to also generate a walletID and insert it here
+          client.query(`INSERT INTO users(googleId) VALUES(${profile.id.toString()})`);
+        }
+      })
+      .catch(e => console.error(e.stack))
     }
   )
 );
