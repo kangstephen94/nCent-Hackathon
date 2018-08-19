@@ -1,30 +1,31 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 class Nav extends React.Component {
   render() {
     return (
+      <div>
       <header className="nav">
-        <section className="nav-inner">
-          <ul className="nav-left">
-            <li className="nav-logo">
-              <Link className="nav-logo-link" to="/stream">
-                eventCent
-              </Link>
+        <div className="nav-left">
+            <img className="ncent-logo" src="../app/assets/images/ncent_logo.png" />
+            <Link className="nav-logo-link" to="/">
+              eventCent
+            </Link>
+        </div>
+        <div className="nav-right">
+          <ul className="nav-right-links">
+            <li className="tokens">
+              Tokens: 100
             </li>
-            
+            <li className="logout">
+              <button className="logout-button">
+                Logout
+              </button>
+            </li>
           </ul>
-          <div className="nav-middle">
-          </div>
-          <div className="nav-right">
-            <ul className="nav-right-links">
-              <li className="user-link">
-                Tokens: 100
-              </li>
-              <li><button className="logout-button" onClick={this.props.logout}>Logout</button></li>
-            </ul>
-          </div>
-        </section>
+        </div>
+
       </header>
+      </div>
     );
   }
 }
